@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>למה מיונים?</title>
+  <style>
+    body {
+      direction: rtl;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f1e8;
+      color: #3a2f2f;
+      padding: 40px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #5a3921;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style-type: "✔ ";
+      padding-right: 20px;
+      margin-top: 10px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: #a65b2f;
+    }
+
+    #contactBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #contactBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #5bd38b;
+    }
+
+    #contactBtn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    #contactStatus {
+      margin-top: 10px;
+      color: #5a3921;
+      font-weight: bold;
+    }
+
+    /* כפתור צף */
+    #floatingWhatsapp {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+
+    #floatingWhatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    #floatingWhatsapp img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 600px) {
+      #contactBtn {
+        width: 100%;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>למה בעצם יש מיונים למגמת הנדסת תוכנה וסייבר?</h1>
+    <p>
+      מגמת <strong>הנדסת תוכנה וסייבר</strong> היא אחת מהמגמות הכי מרתקות, חדשניות ומבוקשות בבית הספר – ולא במקרה.
+      היא משלבת <strong>חשיבה יצירתית</strong>, <strong>פתרון בעיות</strong>, <strong>עבודת צוות</strong>, וחשיפה לעולמות טכנולוגיים עכשוויים – ופותחת דלת לעתיד של הזדמנויות.
+    </p>
+
+    <p>
+      בכל שנה נרשמים למגמה <strong>הרבה יותר תלמידים</strong> ממספר המקומות הפנויים. לכן, חשוב לנו לוודא שהתלמידים שיתקבלו הם באמת אלה שהמגמה מתאימה להם – כאלה ש־
+    </p>
+
+    <ul>
+      <li>מתעניינים בטכנולוגיה</li>
+      <li>סקרנים ויוזמים</li>
+      <li>מוכנים להשקיע</li>
+      <li>ורוצים ללמוד משהו <strong>אחר, מאתגר, ומיוחד</strong></li>
+    </ul>
+
+    <p>
+      המיונים <strong>לא באים לסנן</strong>, אלא לעזור – גם לנו <strong>וגם לכם</strong> – לבדוק אם זו הבחירה הנכונה.  
+      אנחנו רוצים שכל תלמיד שייכנס – ירגיש שהוא נמצא במקום שמתאים לו, שיאתגר אותו, שיפתח לו דלתות, <strong>ושהוא נהנה בו</strong>.
+    </p>
+
+    <button id="contactBtn" onclick="contactRacheli()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="וואטסאפ">
+      יש לך שאלות? צור קשר עם המורה רחלי
+    </button>
+    <div id="contactStatus"></div>
+  </div>
+
+  <!-- כפתור וואטסאפ צף -->
+  <button id="floatingWhatsapp" onclick="contactRacheli()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="וואטסאפ">
+  </button>
+
+  <script>
+    function contactRacheli() {
+      const status = document.getElementById("contactStatus");
+      if (status) status.textContent = "יוצר קשר עם המורה רחלי...";
+
+      setTimeout(() => {
+        const message = encodeURIComponent("היי המורה רחלי, יש לי שאלה...");
+        const phone = "972528452570"; // קידומת ישראל
+        const url = `https://wa.me/${phone}?text=${message}`;
+        window.open(url, "_blank");
+        if (status) status.textContent = "";
+      }, 800);
+    }
+  </script>
+</body>
+</html>
